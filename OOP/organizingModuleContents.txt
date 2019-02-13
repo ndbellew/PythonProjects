@@ -1,0 +1,23 @@
+we could at a point want to call in a module in order to access the variable
+database given the example 
+
+class Database:
+    # the database implementation
+    pass
+
+database = Database()
+
+however this puts stress on the program because the database is created as
+soon as the module is called - start up of the program. so instead what you
+could do is modify the program to have a function initialize database when
+needed: 
+
+class Database:
+    # the database implementation
+    pass
+
+database = None
+
+def initialize_database():
+    global database
+    database = Database()

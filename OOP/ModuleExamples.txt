@@ -1,0 +1,60 @@
+
+from database import Database
+db = Database()
+# Do queries on db
+""" allows us to import specific classes from other modules"""
+
+from database import Database as DB
+db = DB()
+# Do queries on db
+""" shows how you can import Database from database but refer to it as DB"""
+
+from database import Database, Query
+""" We can also import multiple items in one statement. 
+If our database module also contains a Query class, we can import both classes"""
+
+#now if we take a look at file structure
+parent_directory/
+    main.py
+    ecommerce/
+        __init__.py
+        database.py
+        products.py
+        payments/
+            __init__.py
+            square.py
+            stripe.py
+#Here we have our file structure, this will cover how to reach each individual
+#module as well as the sub modules within payments from our main
+# how to import Product() in our products.py module
+import ecommerce.products
+product = ecommerce.products.Product()
+
+from ecommerce.products import Product
+product = Product()
+
+from ecommerce import products
+product = products.Product()
+
+#relative imports
+
+from .database import Database
+""" what this does is tell the program to 'use the database module inside
+	the current package. In this case the current package is the package
+	containing the products.py file we are currently editing, that is, the
+	ecommerce package."""
+
+from ..database import Database
+""" the more periods you use the further along the heirerchy you can move
+	along. but the following would be a valid import if we had an 
+	ecommerce.contact package containing an email module and wanted to 
+	import the send_mail function into our paypal module:"""
+	
+from ..contact.email import send_mail
+""" This import uses two periods to say, the parent of the payments 
+package, and then uses the normal package.module syntax to go back up
+ into the contact package"""
+
+
+
+
