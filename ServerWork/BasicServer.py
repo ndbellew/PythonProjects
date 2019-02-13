@@ -3,7 +3,7 @@
 import socket
 
 HOST = "127.0.0.1" #local host to loopback to
-PORT = 65555 #any port above 1023 are not binded
+PORT = 6555 #any port above 1023 are not binded
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     #SOCK_STREAM refers to TCP
