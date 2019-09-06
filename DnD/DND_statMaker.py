@@ -50,8 +50,8 @@ class StatMaker:
 
     def run(self):
         total, STR,DEX,CON,INT,WIS,CHA = self.DetermineStats()
-        self.PrintStats(total, STR,DEX,CON,INT,WIS,CHA)
         self.GrandTotalCount += self.count
+        self.PrintStats(total, STR,DEX,CON,INT,WIS,CHA)
         self.count = 0
 
 def splitvars(line):
@@ -59,7 +59,6 @@ def splitvars(line):
         yield int(x)
 
 def main():
-    print("HERE")
     stats = input("Input your stat minimums in order (STR,DEX,CON,INT,WIS,CHA)\n ex. 3 3 3 3 7 3\n")
     STR,DEX,CON,INT,WIS,CHA = splitvars(stats)
     RollStats = StatMaker(STR,DEX,CON,INT,WIS,CHA)
